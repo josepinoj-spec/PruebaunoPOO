@@ -14,7 +14,7 @@ class Libro:
         else:
             return False
         
-              
+            
     #Aumenta en 1 la cantidad de copias disponibles
     def devolver(self):
         self.copias_disponibles += 1
@@ -23,13 +23,13 @@ class Libro:
     def mostrar_informacion(self):
         
         print(f"Titulo: {self.titulo} | Autor: {self.autor} | "
-              f"Copias disponibles: {self.copias_disponibles}")
+                f"Copias disponibles: {self.copias_disponibles}")
 
 
 
 class Biblioteca:
     def __init__(self, catalago):
-        self.catalogo=catalago [ ]
+        self.catalogo=catalago 
         
     # Agrega un libro nuevo al catalogo
     def registrar_libro(self, titulo, autor, copias):
@@ -84,7 +84,3 @@ class Biblioteca:
             print("Estado actual del libro:")
             libro.mostrar_informacion() 
             
-    def menu():
-    buscar_libro = Biblioteca()
-
-    
