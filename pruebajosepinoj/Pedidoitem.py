@@ -21,8 +21,6 @@ class Producto:
     def __str__(self):
         return f"{self.nombre} - $ {self.precio}"
 
-
-
 class Pedido:
     def __init__(self):
         self.items = []

@@ -4,6 +4,7 @@ class SistemaAutenticacion:
         # Diccionario para almacenar usuarios: {usuario: contraseña}
         self.usuarios = {}
 
+#Regitar usuario
     def registrar_usuario(self, usuario, contrasena):
         if usuario in self.usuarios:
             return f" El usuario '{usuario}' ya existe. Registro cancelado."
@@ -11,6 +12,7 @@ class SistemaAutenticacion:
             self.usuarios[usuario] = contrasena
             return f" Usuario '{usuario}' registrado exitosamente."
 
+#Login Usuario
     def login(self, usuario, contrasena):
         if usuario not in self.usuarios:
             return f" Acceso rechazado. El usuario '{usuario}' no está registrado."
@@ -20,6 +22,7 @@ class SistemaAutenticacion:
         else:
             return f" Acceso rechazado. Contraseña incorrecta."
 
+#Usuario registrado
     def usuario_registrado(self, usuario):
         if usuario in self.usuarios:
             return f" El usuario '{usuario}' está registrado."
