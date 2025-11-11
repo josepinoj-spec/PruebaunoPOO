@@ -1,4 +1,4 @@
-# Agenda de contactos
+# Ejercicio 7 Agenda de contactos
 class Contacto:
     def __init__(self, nombre,telefono,email):
         
@@ -6,7 +6,6 @@ class Contacto:
         self.telefono = telefono
         self.email = email
 
-            
     def __str__(self):
         return f"Nombre: {self.nombre}, Teléfono: {self.telefono}, Email: {self.email}"
 
@@ -69,8 +68,12 @@ class Agenda:
         #  mostrar estado actualizad
         self.mostrar_contactos()
         
-        
-#Alumno y Curso
+# Aqui termina el ejercio 7
+
+
+
+#Ejercico 2 Alumno y Curso
+
 class Alumno:
     def __init__(self, nombre,apellidos):
         self.nombre = nombre
@@ -117,8 +120,10 @@ class Curso:
         print(f"- {alumno.nombre} {alumno.apellidos}")
     print()
     
+#Termino ejercio 2
 
-#Libro y Biblioteca
+
+#Ejercio 1 Libro y Biblioteca
 class Libro:
     
     def __init__(self, titulo, autor, copias_disponibles):
@@ -134,7 +139,6 @@ class Libro:
         else:
             return False
         
-            
     #Aumenta en 1 la cantidad de copias disponibles
     def devolver(self):
         self.copias_disponibles += 1
@@ -144,7 +148,6 @@ class Libro:
         
         print(f"Titulo: {self.titulo} | Autor: {self.autor} | "
                 f"Copias disponibles: {self.copias_disponibles}")
-
 
 
 class Biblioteca:
@@ -204,7 +207,12 @@ class Biblioteca:
             print("Estado actual del libro:")
             libro.mostrar_informacion() 
 
-# Pedido e item
+#Termino ejercio 1
+
+
+
+#Ejercio 3 Pedido e item
+
 class Item:
     def __init__ (self, nombre, precio, cantidad):
         self.nombre = nombre
@@ -262,7 +270,13 @@ class Pedido:
 
         print(f"\nTOTAL A PAGAR: $ {self.calcular_total()}")
         
-# Pelicula y catalogo
+        
+#Termino ejercico 3
+
+
+
+# Ejercio 5 Pelicula y catalogo
+
 class Pelicula:
     def __init__(self, titulo, genero, año_lanzamiento):
         self.titulo = titulo
@@ -312,8 +326,12 @@ class CatalogoPeliculas:
         else:
             print(f"No hay películas del género '{genero}'.")
 
+#Termino ejercio 5
 
-# Sensor y mediciones
+
+
+# Ejercio 4 Sensor y mediciones
+
 class Sensor:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -377,4 +395,4 @@ class SistemaAutenticacion:
         else:
             return f" El usuario '{usuario}' NO está registrado."
         
-        
+#Termino ejercio 4

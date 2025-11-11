@@ -18,7 +18,7 @@ class Agenda:
     def agregar_contacto(self, nombre, telefono, email):
         nuevo_contacto = Contacto(nombre, telefono, email)
         self.contactos.append(nuevo_contacto)
-        print(f"Contacto {nombre}{telefono}{email} agregado correctamente.")
+        print(f"Contacto {nombre} {telefono} {email} agregado correctamente.")
 
 #Mostrar contactos 
     def mostrar_contactos(self):
