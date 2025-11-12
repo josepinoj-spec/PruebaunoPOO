@@ -26,10 +26,10 @@ class Pedido:
         self.items = []
 
 #Agregar un nuevo item
-    def agregar_item(self, nombre, precio, cantidad):
-        nuevo_item = Item(nombre, precio, cantidad)
-        self.items.append(nuevo_item)
-        print(f"Ítem '{nombre_producto} x {precio} x {cantidad}' agregado al pedido.")
+    def agregar_producto(self, nombre, precio, cantidad):
+        nuevo_producto = Item(nombre, precio, cantidad)
+        self.items.append(nuevo_producto)
+        print(f"Producto '{nombre_producto} x {precio} x {cantidad}' agregado al pedido.")
 
 #Mostrar listado producto
     def mostrar_items(self):

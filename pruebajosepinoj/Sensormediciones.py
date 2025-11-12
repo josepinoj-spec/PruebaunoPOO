@@ -3,7 +3,7 @@
 class Sensor:
     def __init__(self, nombre):
         self.nombre = nombre
-        elf.mediciones = []
+        self.mediciones = []
     
 #Agregamos la medicion
     def agregar_medicion(self,valor):
@@ -23,7 +23,7 @@ class Sensor:
         return max(self.mediciones)
 
 #Obtener el valor minimo de la medicion            
-    def obterner_minimo(self):
+    def obtener_minimo(self):
         if not self.mediciones:
             return "No hay mediciones registradas."
         return min(self.mediciones)

@@ -43,7 +43,7 @@ class Biblioteca:
             print("No hay libros registrados")
             return
         
-        print("\ Catalogo Completo:")
+        print("Catalogo Completo:")
         for libro in self.catalogo:
             libro.mostrar_informacion()
         print()
@@ -55,7 +55,7 @@ class Biblioteca:
                 return libro
         return None
 
-    # Intenta prestar un libro disminuyendo sus copias
+    # Prestar un libro disminuyendo sus copias
     def prestar_libro(self, titulo):
         libro = self.buscar_libro(titulo)
 
