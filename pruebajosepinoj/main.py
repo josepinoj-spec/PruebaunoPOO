@@ -1,398 +1,360 @@
-# Ejercicio 7 Agenda de contactos
-class Contacto:
-    def __init__(self, nombre,telefono,email):
-        
-        self.nombre = nombre
-        self.telefono = telefono
-        self.email = email
+###### Ejercicio  Agenda de contacto #######
 
-    def __str__(self):
-        return f"Nombre: {self.nombre}, Teléfono: {self.telefono}, Email: {self.email}"
+from AgendaContacto import Agenda
 
-    
-class Agenda:
-    def __init__(self):
-        self.contactos = []
+def mostrar_menu():
+    print("\n--- MENÚ DE AGENDA ---")
+    print("1. Agregar contacto")
+    print("2. Mostrar contacto")
+    print("3. Buscar contacto")
+    print("4. Buscar por coincidencia")
+    print("5. Eliminar contacto")
+    print("6. Salir")
 
-#agregar contactos
-    def agregar_contacto(self, nombre, telefono, email):
-        nuevo_contacto = Contacto(nombre, telefono, email)
-        self.contactos.append(nuevo_contacto)
-        print(f"Contacto {nombre}{telefono}{email} agregado correctamente.")
+def main():
+    contacto = AgendaContacto()
 
-#Mostrar contactos 
-    def mostrar_contactos(self):
-        if not self.contactos:
-            print("La agenda está vacía.")
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            nombre = input("Nombre: ")
+            telefono = input("Teléfono: ")
+            email = input("Email: ")
+            agenda.agregar_contacto(nombre, telefono, email)
+
+        elif opcion == "2":
+            agenda.mostrar_contacto()
+
+        elif opcion == "3":
+            dato = input("Ingresa nombre o email a buscar: ")
+            agenda.buscar_contacto(dato)
+
+        elif opcion == "4":
+            texto = input("Texto para búsqueda parcial: ")
+            agenda.buscar_por_lista(texto)
+
+        elif opcion == "5":
+            nombre = input("Nombre del contacto a eliminar: ")
+            agenda.eliminar_contacto(nombre)
+
+        elif opcion == "6":
+            print("¡Hasta luego!")
+            break
+
         else:
-            print("\n Lista de contactos:")
-            for contacto in self.contactos:
-                print(contacto)
+            print("Opción no válida. Intenta de nuevo.")
 
-#Buscar contactos y si no se encuntrab indicarlo
-    def buscar_contacto(self, nombre):
-        for contacto in self.contactos:
-            if contacto.nombre.lower() == dato.lower() or contacto.email.lower() == dato.lower():
-                    print(f" Contacto encontrado:\n{contacto}")
-            return
-            
-        print(f"No se encontró ningún contacto con el nombre '{nombre} {telefono} {email}'.")
+if __name__ == "__main__":
+    main()
 
 
-#Eliminar contacto
-    def eliminar_contacto(self, nombre):
-        for contacto in self.contactos:
-            if contacto.nombre.lower() == nombre.lower():
-                self.contactos.remove(contacto)
-                print(f"Contacto '{nombre}' eliminado correctamente.")
-                return
-        print(f"No se encontró ningún contacto con el nombre '{nombre}'.")
-
-    #buscar por lista
-    def buscar_por_lista(self, texto):
-        encontrados = []
-        texto = texto.lower()
-
-        for contacto in self.contactos:
-            if (texto in contacto.nombre.lower()
-                or texto in contacto.email.lower()):
-                encontrados.append(contacto)
-
-        if not encontrados:
-            print(f"No se encontraron contactos que coincidan con '{texto}'.")
-        else:
-            print(f"\n Se encontraron {len(encontrados)} contacto(s):")
-            for c in encontrados:
-                print(c)
-
-        #  mostrar estado actualizad
-        self.mostrar_contactos()
-        
-# Aqui termina el ejercio 7
+##### Aqui termina el ejercio  #######
 
 
+#### Ejercio alumno y contacto  #######
 
-#Ejercico 2 Alumno y Curso
+from curso import Curso
 
-class Alumno:
-    def __init__(self, nombre,apellidos):
-        self.nombre = nombre
-        self.apellidos = apellidos
-        
-class Curso:
-    def __init__(self, nombre_curso):
-        self.nombre_curso = nombre_curso
-        self.alumnos = []  #lista de alumnos
+def mostrar_menu():
+    print("\n--- MENÚ DEL CURSO ---")
+    print("1. Inscribir alumno")
+    print("2. Listar alumnos")
+    print("3. Buscar alumno")
+    print("4. Eliminar alumno")
+    print("5. Salir")
 
-    #inscribir un alumno
-    def inscribir_alumno(self, nombre_alumno, apellidos_alumno):
-        if self.buscar_alumno(nombre_alumno) is not None:
-            print(f"El alumno {"nombre_alumno"} ya está inscrito.")
-            return
-        
-        nuevo_alumno = Alumno(nombre_alumno, apellidos_alumno)
-        self.alumnos.append(nuevo_alumno)
-        print(f"Alumno {"nombre_alumno"} inscrito en el curso.")
-        
-        # Buscar un alumno por nombre y apellido
-    def buscar_alumno(self, nombre_alumno, apellidos_alumno):
-            for alumno in self.alumnos:
-                if alumno.nombre == nombre_alumno and alumno.apellidos == apellidos_alumno:
-                    return alumno
-                return None
-                
-        #eliminar alumno
-    def eliminar_alumno(self, nombre_alumno, apellidos_alumno):
-            alumno =self.buscar_alumno(nombre_alumno, apellidos_alumno)
-            if alumno is None:
-                print(f"El alunmo '{nombre_alumno} {apellidos_alumno}' No esta inscrito en a curso")
+def main():
+    curso = Curso(" Estadisticas ")
+
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            nombre = input("Nombre del alumno: ")
+            apellidos = input("Apellidos del alumno: ")
+            curso.inscribir_alumno(nombre, apellidos)
+
+        elif opcion == "2":
+            curso.listar_alumnos()
+
+        elif opcion == "3":
+            nombre = input("Nombre del alumno a buscar: ")
+            apellidos = input("Apellidos del alumno a buscar: ")
+            alumno = curso.buscar_alumno(nombre, apellidos)
+            if alumno:
+                print(f"Alumno encontrado: {alumno.nombre} {alumno.apellidos}")
             else:
-                self.alumnos.remove(alumno)    
-            print(f"Alumno '{nombre_alumno} {apellidos_alumno}' ha sido eliminado del curso.")
-                
-    def listar_alumnos(self):
-        if not self.alumnos:
-            print("No hay alumnos inscritos en el curso.")
-        return
+                print("Alumno no encontrado.")
 
-    print("\nLista de alumnos inscritos:")
-    for alumno in self.alumnos:
-        print(f"- {alumno.nombre} {alumno.apellidos}")
-    print()
-    
-#Termino ejercio 2
+        elif opcion == "4":
+            nombre = input("Nombre del alumno a eliminar: ")
+            apellidos = input("Apellidos del alumno a eliminar: ")
+            curso.eliminar_alumno(nombre, apellidos)
 
+        elif opcion == "5":
+            print("¡Hasta luego!")
+            break
 
-#Ejercio 1 Libro y Biblioteca
-class Libro:
-    
-    def __init__(self, titulo, autor, copias_disponibles):
-        self.titulo = titulo
-        self.autor = autor
-        self.copias_disponibles = copias_disponibles
-
-    #Disminuye una copia si hay disponibles.
-    def prestar(self):
-        if self.copias_disponibles > 0:
-            self.copias_disponibles -= 1
-            return True
         else:
-            return False
-        
-    #Aumenta en 1 la cantidad de copias disponibles
-    def devolver(self):
-        self.copias_disponibles += 1
-        
-    #Muestra datos del libro.
-    def mostrar_informacion(self):
-        
-        print(f"Titulo: {self.titulo} | Autor: {self.autor} | "
-                f"Copias disponibles: {self.copias_disponibles}")
+            print("Opción no válida. Intenta de nuevo.")
+
+if __name__ == "__main__":
+    main()
 
 
-class Biblioteca:
-    def __init__(self, catalago):
-        self.catalogo=catalago 
-        
-    # Agrega un libro nuevo al catalogo
-    def registrar_libro(self, titulo, autor, copias):
-        nuevo = Libro(titulo, autor, copias)
-        self.catalogo.append(nuevo)
-        print(f"Libro '{titulo}' registrado correctamente.")
-        
-    #Muestra todos los libros registrados con sus copias
-    def mostrar_catalogo(self):
-        if not self.catalogo:
-            print("No hay libros registrados")
-            return
-        
-        print("\ Catalogo Completo:")
-        for libro in self.catalogo:
-            libro.mostrar_informacion()
-        print()
-            
-    #  Busca un libro por titulo y lo devuelve si existe 
-    def buscar_libro(self, titulo):
-        for libro in self.catalogo:
-            if libro.titulo.lower() == titulo.lower():
-                return libro
-        return None
+#####   Termino del ejercio ##########
 
-    # Intenta prestar un libro disminuyendo sus copias
-    def prestar_libro(self, titulo):
-        libro = self.buscar_libro(titulo)
 
-        if libro is None:
-            print("El libro no existe en la biblioteca")
+###### Ejercio de Libro y biblioteca  ######
+
+from biblioteca import Biblioteca
+
+def mostrar_menu():
+    print("\n--- MENÚ DE BIBLIOTECA ---")
+    print("1. Registrar libro")
+    print("2. Mostrar catálogo")
+    print("3. Prestar libro")
+    print("4. Devolver libro")
+    print("5. Estado de un libro")
+    print("6. Salir")
+
+def main():
+    biblioteca = Biblioteca()
+
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            titulo = input("Título del libro: ")
+            autor = input("Autor del libro: ")
+            copias = int(input("Número de copias: "))
+            biblioteca.registrar_libro(titulo, autor, copias)
+
+        elif opcion == "2":
+            biblioteca.mostrar_catalogo()
+
+        elif opcion == "3":
+            titulo = input("Título del libro a prestar: ")
+            biblioteca.prestar_libro(titulo)
+
+        elif opcion == "4":
+            titulo = input("Título del libro a devolver: ")
+            biblioteca.devolver_libro(titulo)
+
+        elif opcion == "5":
+            titulo = input("Título del libro: ")
+            biblioteca.estado_libro(titulo)
+
+        elif opcion == "6":
+            print("¡Hasta luego!")
+            break
+
         else:
-            if libro.prestar():
-                print(f"Se ha prestado '{titulo}'")
-            else:
-                print(f"No quedan copias de '{titulo}' para prestar.")   
-    
-    # Registra la devolucion de un libro al catalogo
-        if libro is None:
-            print("Este libro no pertenece a la biblioteca.")
+            print("Opción no válida. Intenta de nuevo.")
+
+if __name__ == "__main__":
+    main()
+
+#####Termino de ejercicio   ######
+
+
+
+
+###### Ejercico Pedido   #######
+
+from pedido import Pedido
+
+def mostrar_menu():
+    print("\n--- MENÚ DE PEDIDO ---")
+    print("1. Agregar ítem")
+    print("2. Mostrar ítems")
+    print("3. Mostrar detalle del pedido")
+    print("4. Salir")
+
+def main():
+    pedido = Pedido()
+
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            nombre = input("Nombre del producto: ")
+            precio = float(input("Precio del producto: "))
+            cantidad = int(input("Cantidad: "))
+            pedido.agregar_item(nombre, precio, cantidad)
+
+        elif opcion == "2":
+            pedido.mostrar_items()
+
+        elif opcion == "3":
+            pedido.mostrar_detalle()
+
+        elif opcion == "4":
+            print("¡Pedido finalizado!")
+            break
+
         else:
-            libro.devolver()
-            print(f"Se ha registrado la devolucion de '{titulo}'.")
+            print("Opción no válida. Intenta de nuevo.")
 
-    # Muestra la informacion actualizada de un libro especifico
-    def estado_libro(self, titulo):
-        libro = self.buscar_libro(titulo)
-        
-        if libro is None:
-            print("El libro no se encuentra en la biblioteca.")
+if __name__ == "__main__":
+    main()
+
+
+###### Termino de ejercicio  ######
+
+
+##### Ejercio catalogo de pelicula ######
+
+
+from catalogo import CatalogoPeliculas
+
+def mostrar_menu():
+    print("\n--- MENÚ DE CATÁLOGO DE PELÍCULAS ---")
+    print("1. Agregar película")
+    print("2. Mostrar catálogo")
+    print("3. Buscar por título")
+    print("4. Filtrar por género")
+    print("5. Salir")
+
+def main():
+    catalogo = CatalogoPeliculas()
+
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            titulo = input("Título de la película: ")
+            genero = input("Género: ")
+            año = input("Año de lanzamiento: ")
+            catalogo.agregar_pelicula(titulo, genero, año)
+
+        elif opcion == "2":
+            catalogo.mostrar_catalogo()
+
+        elif opcion == "3":
+            titulo = input("Título a buscar: ")
+            catalogo.buscar_por_titulo(titulo)
+
+        elif opcion == "4":
+            genero = input("Género a filtrar: ")
+            catalogo.filtrar_por_genero(genero)
+
+        elif opcion == "5":
+            print("¡Hasta luego!")
+            break
+
         else:
-            print("Estado actual del libro:")
-            libro.mostrar_informacion() 
+            print("Opción no válida. Intenta de nuevo.")
 
-#Termino ejercio 1
-
-
-
-#Ejercio 3 Pedido e item
-
-class Item:
-    def __init__ (self, nombre, precio, cantidad):
-        self.nombre = nombre
-        self.precio = precio
-        self.cantidad = cantidad
-                
-    def calcular_subtotal(self):
-        return f"self.precio * self.cantidad"
-
-    def __str__(self):
-        return f"{self.nombre} | Precio: ${self.precio:.2f} | Cantidad: {self.cantidad} | Subtotal: ${self.calcular_subtotal():.2f}"
+if __name__ == "__main__":
+    main()
 
 
-class Producto:
-    def __init__(self, nombre, precio, cantidad):
-        self.nombre = nombre
-        self.precio = precio
-        self.cantidad = cantidad
+#####  Termino ejercico pelicula #####
 
-    def __str__(self):
-        return f"{self.nombre} - $ {self.precio}"
 
-class Pedido:
-    def __init__(self):
-        self.items = []
+#### Ejercicio Sensor  #####
 
-#Agregar un nuevo item
-    def agregar_item(self, nombre, precio, cantidad):
-        nuevo_item = Item(nombre, precio, cantidad)
-        self.items.append(nuevo_item)
-        print(f"Ítem '{nombre_producto} x {precio} x {cantidad}' agregado al pedido.")
 
-#Mostrar listado producto
-    def mostrar_items(self):
-        if not self.items:
-            print(" El pedido está vacío.")
+from sensor import Sensor
+
+def mostrar_menu():
+    print("\n--- MENÚ DE SENSOR ---")
+    print("1. Agregar medición")
+    print("2. Mostrar promedio")
+    print("3. Mostrar máximo")
+    print("4. Mostrar mínimo")
+    print("5. Salir")
+
+def main():
+    nombre_sensor = input("Ingrese el nombre del sensor: ")
+    sensor = Sensor(nombre_sensor)
+
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            valor = float(input("Ingrese el valor de la medición: "))
+            sensor.agregar_medicion(valor)
+
+        elif opcion == "2":
+            promedio = sensor.obtener_promedio()
+            if promedio is not None:
+                print(f"Promedio de mediciones: {promedio:.2f}")
+
+        elif opcion == "3":
+            maximo = sensor.obtener_maximo()
+            if maximo is not None:
+                print(f"Valor máximo: {maximo}")
+
+        elif opcion == "4":
+            minimo = sensor.obtener_minimo()
+            if minimo is not None:
+                print(f"Valor mínimo: {minimo}")
+
+        elif opcion == "5":
+            print("¡Hasta luego!")
+            break
+
         else:
-            print("\n Lista de ítems en el pedido:")
-            for item in self.items:
-                print(item)
-                
-# calcular sub total   
-    def calcular_total(self):
-        return sum(item.calcular_subtotal() for item in self.items)
+            print("Opción no válida. Intenta de nuevo.")
 
-#Mostrar detalle
-    def mostrar_detalle(self):
-        print("\n DETALLE DEL PEDIDO")
-        if not self.items:
-            print("El pedido está vacío.")
-            return
-
-        for item in self.items:
-            print(item)
-
-        print(f"\nTOTAL A PAGAR: $ {self.calcular_total()}")
-        
-        
-#Termino ejercico 3
+if __name__ == "__main__":
+    main()
 
 
-
-# Ejercio 5 Pelicula y catalogo
-
-class Pelicula:
-    def __init__(self, titulo, genero, año_lanzamiento):
-        self.titulo = titulo
-        self.genero = genero
-        self.año_lanzamiento = año_lanzamiento
-
-    def __str__(self):
-        return f"{self.titulo} ({self.año_lanzamiento}) - Género: {self.genero}"
+###### Termino ejercicio sensor #####
 
 
-class CatalogoPeliculas:
-    def __init__(self):
-        self.peliculas = []
+#### Ejercicio  Autentificacion Usuario  #####
 
-#Agregar pelicula
-    def agregar_pelicula(self, titulo, genero, año_lanzamiento):
-        nueva = Pelicula(titulo, genero, año_lanzamiento)
-        self.peliculas.append(nueva)
-        print(f"Película '{titulo} {genero} {año_lanzamiento}' agregada correctamente.")
 
-#Mostar catalogo
-    def mostrar_catalogo(self):
-        if not self.peliculas:
-            print("El catálogo está vacío.")
+from autenticacion import SistemaAutenticacion
+
+def mostrar_menu():
+    print("\n--- MENÚ DE AUTENTICACIÓN ---")
+    print("1. Registrar usuario")
+    print("2. Iniciar sesión")
+    print("3. Verificar si usuario está registrado")
+    print("4. Salir")
+
+def main():
+    sistema = SistemaAutenticacion()
+
+    while True:
+        mostrar_menu()
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            usuario = input("Ingrese el nombre de usuario: ")
+            contrasena = input("Ingrese la contraseña: ")
+            print(sistema.registrar_usuario(usuario, contrasena))
+
+        elif opcion == "2":
+            usuario = input("Ingrese el nombre de usuario: ")
+            contrasena = input("Ingrese la contraseña: ")
+            print(sistema.login(usuario, contrasena))
+
+        elif opcion == "3":
+            usuario = input("Ingrese el nombre de usuario: ")
+            print(sistema.usuario_registrado(usuario))
+
+        elif opcion == "4":
+            print("¡Hasta luego!")
+            break
+
         else:
-            print("\n Catálogo de Películas:")
-            for p in self.peliculas:
-                print(f"- {p}")
+            print("Opción no válida. Intenta de nuevo.")
 
-#filtro por titulo
-    def buscar_por_titulo(self, titulo):
-        resultados = [p for p in self.peliculas if p.titulo.lower() == titulo.lower()]
-        if resultados:
-            print("\n Película encontrada:")
-            for p in resultados:
-                print(f"- {p}")
-        else:
-            print(f" No se encontró ninguna película con el título '{titulo}'.")
-
-#filtro por genero
-    def filtrar_por_genero(self, genero):
-        resultados = [p for p in self.peliculas if p.genero.lower() == genero.lower()]
-        if resultados:
-            print(f"\n Películas del género '{genero}':")
-            for p in resultados:
-                print(f"- {p}")
-        else:
-            print(f"No hay películas del género '{genero}'.")
-
-#Termino ejercio 5
+if __name__ == "__main__":
+    main()
 
 
-
-# Ejercio 4 Sensor y mediciones
-
-class Sensor:
-    def __init__(self, nombre):
-        self.nombre = nombre
-        elf.mediciones = []
-    
-#Agregamos la medicion
-    def agregar_medicion(self,valor):
-        self.mediciones.append(valor)
-        print(f"Medición {valor} agregada al sensor '{self.nombre}'.")
-    
-#Para obtener la medicion promedio   
-    def obtener_promedio(self):
-        if not self.mediciones:
-            return "No hay mediciones registradas."
-        return sum(self.mediciones) / len(self.mediciones)
-
-#Obtener el valor maximo de la medicion
-    def obtener_maximo(self):
-        if not self.mediciones:
-            return "No hay mediciones registradas."
-        return max(self.mediciones)
-
-#Obtener el valor minimo de la medicion            
-    def obterner_minimo(self):
-        if not self.mediciones:
-            return "No hay mediciones registradas."
-        return min(self.mediciones)
-        
-#Mostrar el nombre de la medicion
-    def mostrar_nombre(self):       
-        return self.nombre
-
-# Usuario y autentificacion
-class SistemaAutenticacion:
-    def __init__(self):
-        # Diccionario para almacenar usuarios: {usuario: contraseña}
-        self.usuarios = {}
-
-#Regitar usuario
-    def registrar_usuario(self, usuario, contrasena):
-        if usuario in self.usuarios:
-            return f" El usuario '{usuario}' ya existe. Registro cancelado."
-        else:
-            self.usuarios[usuario] = contrasena
-            return f" Usuario '{usuario}' registrado exitosamente."
-
-#Login Usuario
-    def login(self, usuario, contrasena):
-        if usuario not in self.usuarios:
-            return f" Acceso rechazado. El usuario '{usuario}' no está registrado."
-
-        if self.usuarios[usuario] == contrasena:
-            return f" Acceso autorizado. Bienvenido '{usuario}'."
-        else:
-            return f" Acceso rechazado. Contraseña incorrecta."
-
-#Usuario registrado
-    def usuario_registrado(self, usuario):
-        if usuario in self.usuarios:
-            return f" El usuario '{usuario}' está registrado."
-        else:
-            return f" El usuario '{usuario}' NO está registrado."
-        
-#Termino ejercio 4
+###### Termino ejercicio Autentificacion #####

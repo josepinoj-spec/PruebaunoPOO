@@ -12,7 +12,7 @@ class Contacto:
     
 class Agenda:
     def __init__(self):
-        self.contactos = []
+        self.contacto = []
 
 #agregar contactos
     def agregar_contacto(self, nombre, telefono, email):
@@ -21,17 +21,17 @@ class Agenda:
         print(f"Contacto {nombre} {telefono} {email} agregado correctamente.")
 
 #Mostrar contactos 
-    def mostrar_contactos(self):
-        if not self.contactos:
+    def mostrar_contacto(self):
+        if not self.contacto:
             print("La agenda está vacía.")
         else:
             print("\n Lista de contactos:")
-            for contacto in self.contactos:
+            for contacto in self.contacto:
                 print(contacto)
 
 #Buscar contactos y si no se encuntrab indicarlo
     def buscar_contacto(self, nombre):
-        for contacto in self.contactos:
+        for contacto in self.contacto:
             if contacto.nombre.lower() == dato.lower() or contacto.email.lower() == dato.lower():
                     print(f" Contacto encontrado:\n{contacto}")
             return
@@ -41,7 +41,7 @@ class Agenda:
 
 #Eliminar contacto
     def eliminar_contacto(self, nombre):
-        for contacto in self.contactos:
+        for contacto in self.contacto:
             if contacto.nombre.lower() == nombre.lower():
                 self.contactos.remove(contacto)
                 print(f"Contacto '{nombre}' eliminado correctamente.")
@@ -53,7 +53,7 @@ class Agenda:
         encontrados = []
         texto = texto.lower()
 
-        for contacto in self.contactos:
+        for contacto in self.contacto:
             if (texto in contacto.nombre.lower()
                 or texto in contacto.email.lower()):
                 encontrados.append(contacto)
@@ -66,4 +66,4 @@ class Agenda:
                 print(c)
 
         #  mostrar estado actualizad
-        self.mostrar_contactos()
+        self.mostrar_contacto()

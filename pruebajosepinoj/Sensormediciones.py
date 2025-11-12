@@ -1,4 +1,5 @@
-#creaciond d la clase
+#creacion de la clase
+
 class Sensor:
     def __init__(self, nombre):
         self.nombre = nombre
