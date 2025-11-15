@@ -4,8 +4,8 @@ class Alumno:
         self.apellidos = apellidos
         
 class Curso:
-    def __init__(self, nombre_curso):
-        self.nombre_curso = nombre_curso
+    def __init__(self, curso):
+        self.nombre_curso = Nombre_curso
         self.alumnos = []  #lista de alumnos
 
     #inscribir un alumno

@@ -1,6 +1,6 @@
 ###### Ejercicio  Agenda de contacto #######
 
-from AgendaContacto import Agenda
+from agenda_Contacto import Agenda
 
 def mostrar_menu():
     print("\n--- MENÚ DE AGENDA ---")
@@ -12,7 +12,7 @@ def mostrar_menu():
     print("6. Salir")
 
 def main():
-    contacto = AgendaContacto()
+    contacto = Agenda  
 
     while True:
         mostrar_menu()
@@ -22,22 +22,22 @@ def main():
             nombre = input("Nombre: ")
             telefono = input("Teléfono: ")
             email = input("Email: ")
-            agenda.agregar_contacto(nombre, telefono, email)
+            Agenda.agregar_contacto(nombre, telefono, email)
 
         elif opcion == "2":
-            agenda.mostrar_contacto()
+            Agenda.mostrar_contacto()
 
         elif opcion == "3":
             dato = input("Ingresa nombre o email a buscar: ")
-            agenda.buscar_contacto(dato)
+            Agenda.buscar_contacto(dato)
 
         elif opcion == "4":
             texto = input("Texto para búsqueda parcial: ")
-            agenda.buscar_por_lista(texto)
+            Agenda.buscar_por_lista(texto)
 
         elif opcion == "5":
             nombre = input("Nombre del contacto a eliminar: ")
-            agenda.eliminar_contacto(nombre)
+            Agenda.eliminar_contacto(nombre)
 
         elif opcion == "6":
             print("¡Hasta luego!")
@@ -66,10 +66,10 @@ def mostrar_menu():
     print("5. Salir")
 
 def main():
-    curso = Curso(" Estadisticas ")
+    curso = Curso("Estadisticas")
 
     while True:
-        mostrar_menu()
+        mostrar_menu_curso()
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
@@ -131,9 +131,17 @@ def main():
         if opcion == "1":
             titulo = input("Título del libro: ")
             autor = input("Autor del libro: ")
-            copias = int(input("Número de copias: "))
+            while True:
+                try:
+                    copias = int(input("Número de copias:"))
+                    if copias < 1:
+                        print("Debe ingresar un número mayor a 0")
+                        continue
+                    break
+                except ValueError:
+                    print("Ingrese un número válido")
             biblioteca.registrar_libro(titulo, autor, copias)
-
+                    
         elif opcion == "2":
             biblioteca.mostrar_catalogo()
 
@@ -333,17 +341,17 @@ def main():
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
-            usuario = input("Ingrese el nombre de usuario: ")
-            contrasena = input("Ingrese la contraseña: ")
+            usuario = input("Ingrese el nombre de usuario: ").strip()
+            contrasena = input("Ingrese la contraseña: ").strip()
             print(sistema.registrar_usuario(usuario, contrasena))
 
         elif opcion == "2":
-            usuario = input("Ingrese el nombre de usuario: ")
-            contrasena = input("Ingrese la contraseña: ")
+            usuario = input("Ingrese el nombre de usuario: ").strip()
+            contrasena = input("Ingrese la contraseña: ").strip()
             print(sistema.login(usuario, contrasena))
 
         elif opcion == "3":
-            usuario = input("Ingrese el nombre de usuario: ")
+            usuario = input("Ingrese el nombre de usuario: ").strip()
             print(sistema.usuario_registrado(usuario))
 
         elif opcion == "4":
